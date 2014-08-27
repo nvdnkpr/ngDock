@@ -1,0 +1,17 @@
+
+body {
+  padding: 0;
+  margin: 0;
+}
+.dock-top {
+  margin-bottom: 10px;
+}
+.dock-left {
+  margin-right: 10px;
+}
+.dock-right {
+  margin-left: 10px;
+}
+.dock-bottom {
+  margin-top: 10px;
+}
