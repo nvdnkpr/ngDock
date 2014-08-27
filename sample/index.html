@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="testdock">
+
+<head>
+  <script data-require="jquery@*" data-semver="2.1.1" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script data-require="angular.js@*" data-semver="1.3.0-beta.5" src="https://code.angularjs.org/1.3.0-beta.5/angular.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script src="ng-dock.js"></script>
+  <script src="script.js"></script>
+  <title>ngDock sample usage</title>
+</head>
+
+<body dock-ref><!-- dock ref needed to anchor the docked divs -->
+  <div style="border:solid 1px black; background-color: transparent" dock-top="100">1. dock top</div>
+  <div style="border:solid 1px black; background-color: transparent" dock-left="140" dock-ref>
+    2. dock left
+    <div style="border:solid 1px black;" dock-bottom="70">2.1. dock bottom on left</div>
+  </div>
+  <div style="border:solid 1px black; background-color: transparent" dock-top="70">3. another dock top</div>
+  <div style="border:solid 1px black; background-color: transparent" dock-bottom="70">4. dock bottom</div>
+  <div style="border:solid 1px black; background-color: transparent" dock-right="70">5. dock right</div>
+  <div style="border:solid 1px black; background-color: transparent" dock-top="70">6. dock top</div>
+  <div style="border:solid 1px black;" dock-fill dock-ref>
+    7. dock fill
+    <span style="border:solid 1px black; background-color: transparent" dock-bottom="70">7.1. dock bottom</span>
+    <span style="border:solid 1px black; background-color: transparent" dock-right="70">7.2. dock right</span>
+    <span style="border:solid 1px black;" dock-fill><br />7.3. fill</span>
+  </div>
+</body>
+
+</html>
