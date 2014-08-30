@@ -14,7 +14,7 @@ angular.module('ngDock', [])
             var valids = [ 'left', 'right', 'top', 'bottom', 'fill' ];
             if (valids.indexOf(pos) == -1)
               throw {
-                message: "pos must be one of this: " + valids.join(', ')
+                message: "dock position must be one of this: " + valids.join(', ')
               };
             var r = {};
             r.position = 'absolute';
@@ -25,18 +25,12 @@ angular.module('ngDock', [])
             if ("top|bottom".indexOf(pos) != -1) r.height = size;
             if ("left|right".indexOf(pos) != -1) r.width = size;
             $element.addClass("dock-" + pos);
-            $element.css(r);
             if ("top|bottom".indexOf(pos) != -1) size = $element.outerHeight(true);
             if ("left|right".indexOf(pos) != -1) size = $element.outerWidth(true);
             if (pos == "bottom") s.bottom += size;
-            if (pos == "left") s.left += size;
-            if (pos == "right") s.right += size;
-            if (pos == "top") s.top += size;
-            $div.css({
-              minWidth  : s.left + s.right,
-              minHeight : s.top + s.bottom
-            });
-            $div.css(css);
+            if (pos == "left")   s.left   += size;
+            if (pos == "right")  s.right  += size;
+            if (pos == "top")    s.top   += size;
             return r;
           };
         };
@@ -47,14 +41,7 @@ angular.module('ngDock', [])
   .directive('dockRef', function(dock) {
     return {
       restrict: "A",
-      link: function($scope, $element, $args) {
-        $element.css({
-          position: 'absolute',
-          top: 0,
-          bottom: 0,
-          left: 0,
-          right: 0
-        });
+      compile: function() {
       },
       controller: function($scope, $element) {
         $scope.__dock_ref_id = String(Math.random()).replace(/\./g, "");
@@ -63,68 +50,35 @@ angular.module('ngDock', [])
       scope: true
     };
   })
-  .directive('dockTop', function(dock) {
+  .directive('dock', function(dock) { 
     return {
       restrict: "A",
-      link: function($scope, $element, $args) {
-        var area = dock.dockRefs[$scope.$parent.__dock_ref_id];
-        area.addChild($element, 'top', parseInt($args.dockTop));
+      compile: function($element, $args) {
+        return { 
+          pre: function preLink($scope, $element, $args) {
+          },
+          post: function postLink($scope, $element, $args) {
+          }
+        };
       },
       controller: function($scope, $element) {
+        var to = ['top', 'bottom', 'left', 'right', 'fill'];
+        if (to.indexOf($element.attr('dock').toLowerCase()) == -1) {
+          throw {
+            message: "dock position must be one of this: " + to.join(', ')
+          }
+        }
+        $scope.dock = {
+          position: $element.attr('dock').toLowerCase()
+        };
         $scope.__dock_id = String(Math.random()).replace(/\./g, "");
+        var sz = 0;
+        if ("top|bottom".indexOf($scope.dock.position) != -1) sz = $element.outerHeight(true);
+        if ("left|right".indexOf($scope.dock.position) != -1) sz = $element.outerWidth(true);
+        var area = dock.dockRefs[$scope.$parent.__dock_ref_id];
+        $element.css(area.addChild($element, $scope.dock.position, sz));
       },
       scope: true
     };
   })
-  .directive('dockLeft', function(dock) {
-    return {
-      restrict: "A",
-      link: function($scope, $element, $args) {
-        var area = dock.dockRefs[$scope.$parent.__dock_ref_id];
-        area.addChild($element, 'left', parseInt($args.dockLeft));
-      },
-      controller: function($scope, $element) {
-        $scope.__dock_id = String(Math.random()).replace(/\./g, "");
-      },
-      scope: true
-    };
-  })
-  .directive('dockBottom', function(dock) {
-    return {
-      restrict: "A",
-      link: function($scope, $element, $args) {
-        var area = dock.dockRefs[$scope.$parent.__dock_ref_id];
-        area.addChild($element, 'bottom', parseInt($args.dockBottom));
-      },
-      controller: function($scope, $element) {
-        $scope.__dock_id = String(Math.random()).replace(/\./g, "");
-      },
-      scope: true
-    };
-  })
-  .directive('dockRight', function(dock) {
-    return {
-      restrict: "A",
-      link: function($scope, $element, $args) {
-        var area = dock.dockRefs[$scope.$parent.__dock_ref_id];
-        area.addChild($element, 'right', parseInt($args.dockRight));
-      },
-      controller: function($scope, $element) {
-        $scope.__dock_id = String(Math.random()).replace(/\./g, "");
-      },
-      scope: true
-    };
-  })
-  .directive('dockFill', function(dock) {
-    return {
-      restrict: "A",
-      link: function($scope, $element, $args) {
-        var area = dock.dockRefs[$scope.$parent.__dock_ref_id];
-        area.addChild($element, 'fill');
-      },
-      controller: function($scope, $element) {
-        $scope.__dock_id = String(Math.random()).replace(/\./g, "");
-      },
-      scope: true
-    };
-  })
+  
