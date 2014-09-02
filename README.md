@@ -12,7 +12,11 @@ usage:
 
 $angularexpr is an angular expression that returns one of this:
 
-top, left, right, bottom, fill
+- top
+- left
+- right
+- bottom
+- fill
 
 example:
 ```html
