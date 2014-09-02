@@ -107,16 +107,29 @@ angular.module('ngDock', [])
     };
   })
   .directive("dockResizable", function(dock) {
+    function enableResize($element, dp) {
+      $element.resizable({
+        handles: dock.handlesByDock[dp]
+      });
+    }
     return {
       require: 'dock',
       restrict: "A",
       controller: function($scope, $element) {
         var dp = $scope.$eval($element.attr('dock'));
-        if (dock.valids.indexOf(dp) > 0 && dp != "fill") {
-          $element.resizable({
-            handles: dock.handlesByDock[dp]
-          });
-        }
+        if (dock.valids.indexOf(dp) >= 0 && dp != "fill") enableResize($element, dp);
+        $scope.$watch(function() {
+          var newdp = $scope.$eval($element.attr('dock'));
+          if (newdp != dp) {
+            if (dock.valids.indexOf(newdp) == -1)
+              throw {
+                message: "dock position must be one of this: " + valids.join(', ')
+              };
+            dp = newdp;
+            $element.resizable('destroy');
+            if (newdp != 'fill') enableResize($element, dp);
+          }
+        });
       }
     }
   })
