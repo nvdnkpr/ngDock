@@ -3,6 +3,13 @@ angular.module('ngDock', [])
     var valids = [ 'left', 'right', 'top', 'bottom', 'fill' ];
     return {
       dockRefs: {},
+      valids: valids,
+      handlesByDock: {
+        "top": "s",
+        "left": "e",
+        "right": "w",
+        "bottom": "n"
+      },
       Area: (function() {
         function setPosition(r, s, pos) {
             r.position = 'absolute';
@@ -64,6 +71,7 @@ angular.module('ngDock', [])
               update(childList[x].element, pos, s);
             }
           };
+          
           var _this = this;
           $(window).resize(function() {
             _this.refresh();
@@ -90,7 +98,7 @@ angular.module('ngDock', [])
     return {
       restrict: "A",
       controller: function($scope, $element) {
-        var dp = $element.attr('dock').toLowerCase();
+        var dp = $element.attr('dock');
         $scope.__dock_id = String(Math.random()).replace(/\./g, "");
         var area = dock.dockRefs[$scope.$parent.__dock_ref_id];
         area.addChild($element, dp);
@@ -98,3 +106,18 @@ angular.module('ngDock', [])
       scope: true
     };
   })
+  .directive("dockResizable", function(dock) {
+    return {
+      require: 'dock',
+      restrict: "A",
+      controller: function($scope, $element) {
+        var dp = $scope.$eval($element.attr('dock'));
+        if (dock.valids.indexOf(dp) > 0 && dp != "fill") {
+          $element.resizable({
+            handles: dock.handlesByDock[dp]
+          });
+        }
+      }
+    }
+  })
+//# sourceURL=http://plnkr.co/edit/ng-dock.js
