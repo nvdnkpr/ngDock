@@ -1,31 +1,36 @@
 <!DOCTYPE html>
 <html ng-app="testdock">
 
-<head>
-  <script data-require="jquery@*" data-semver="2.1.1" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script data-require="angular.js@*" data-semver="1.3.0-beta.5" src="https://code.angularjs.org/1.3.0-beta.5/angular.js"></script>
-  <link rel="stylesheet" href="style.css" />
-  <script src="../ng-dock.js"></script>
-  <script src="script.js"></script>
-</head>
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/css/smoothness/jquery-ui-1.10.0.custom.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/jquery-ui.js"></script>
+    <script src="https://code.angularjs.org/1.3.0-beta.5/angular.js"></script>
+    <script src="ng-dock.js"></script>
+    <script src="script.js"></script>
+  </head>
 
-<body dock-ref ng-controller="sampleController">
-  <div id="1 top" style="height: 120px; border:solid 1px black; background-color: transparent" dock="'top'">1. dock top</div>
-  <div id="2 left" style="width: 30%; border:solid 1px black; background-color: transparent" dock="div2.dock" dock-ref>
+  <body dock-ref="" ng-controller="sampleController">
+    <div id="1 top" style="height: 120px; border:solid 1px black; background-color: transparent" dock="'top'" dock-resizable>1. dock top</div>
+    <div id="2 left" style="width: 30%; border:solid 1px black; background-color: transparent" dock="div2.dock" dock-ref="">
     2. dock left
-    <button ng-click="toggleLeftRight()">Toggle Left Right</button>
-    <div id="2.1 bottom" style="height: 80px; border:solid 1px black;" dock="'bottom'">2.1. dock bottom on left</div>
-  </div>
-  <div id="3 top" style="height: 80px; border:solid 1px black; background-color: transparent" dock="'top'">3. another dock top</div>
-  <div id="4 bottom" style="height: 80px; border:solid 1px black; background-color: transparent" dock="'bottom'">4. dock bottom</div>
-  <div id="5 right" style="width: 140px; border:solid 1px black; background-color: transparent" dock="'right'">5. dock right</div>
-  <div id="6 top" style="height: 80px; border:solid 1px black; background-color: transparent" dock="'top'">6. dock top</div>
-  <div id="7 fill" style="border:solid 1px black;" dock="'fill'" dock-ref>
+                <button ng-click="toggleLeftRight()">Toggle Left Right</button>
+      <div id="2.1 bottom" style="height: 80px; border:solid 1px black;" dock="'bottom'">2.1. dock bottom on left</div>
+    </div>
+    <div id="3 top" style="height: 80px; border:solid 1px black; background-color: transparent" dock="'top'">3. another dock top</div>
+    <div id="4 bottom" style="height: 80px; border:solid 1px black; background-color: transparent" dock="'bottom'">4. dock bottom</div>
+    <div id="5 right" style="width: 140px; border:solid 1px black; background-color: transparent" dock="'right'" dock-resizable>5. dock right</div>
+    <div id="6 top" style="height: 80px; border:solid 1px black; background-color: transparent" dock="'top'">6. dock top</div>
+    <div id="7 fill" style="border:solid 1px black;" dock="'fill'" dock-ref="">
     7. dock fill
-    <div id="7.1 bottom" style="height: 90px; border:solid 1px black; background-color: transparent" dock="'bottom'">7.1. dock bottom</div>
-    <div id="7.2 right" style="width: 140px; border:solid 1px black; background-color: transparent" dock="'right'">7.2. dock right</div>
-    <div id="7.3 fill" style="border:solid 1px black;" dock="'fill'"><br />7.3. fill</div>
-  </div>
-</body>
+                <div id="7.1 bottom" style="height: 90px; border:solid 1px black; background-color: transparent" dock="'bottom'">7.1. dock bottom</div>
+      <div id="7.2 right" style="width: 140px; border:solid 1px black; background-color: transparent" dock="'right'">7.2. dock right</div>
+      <div id="7.3 fill" style="border:solid 1px black;" dock="'fill'">
+        <br />
+
+7.3. fill</div>
+    </div>
+  </body>
 
 </html>
