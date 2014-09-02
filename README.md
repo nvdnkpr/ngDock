@@ -37,7 +37,7 @@ example:
 
 ```html
 <body dock-ref>
-  <div dock="'top'" dock-resizeble>Top</div>
+  <div dock="'top'" dock-resizable>Top</div>
   <div dock="'fill'">Fill</div>
 </body>
 ```
