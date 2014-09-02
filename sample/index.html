@@ -11,26 +11,25 @@
     <script src="script.js"></script>
   </head>
 
-  <body dock-ref="" ng-controller="sampleController">
-    <div id="1 top" style="height: 120px; border:solid 1px black; background-color: transparent" dock="'top'" dock-resizable>1. dock top</div>
-    <div id="2 left" style="width: 30%; border:solid 1px black; background-color: transparent" dock="div2.dock" dock-ref="">
+<body dock-ref="" ng-controller="sampleController">
+  <div id="1 top" style="height: 120px;" dock="'top'" dock-resizable>1. dock top</div>
+  <div id="2 left" dock-resizable style="width: 30%;" dock="div2.dock" dock-ref="">
     2. dock left
-                <button ng-click="toggleLeftRight()">Toggle Left Right</button>
-      <div id="2.1 bottom" style="height: 80px; border:solid 1px black;" dock="'bottom'">2.1. dock bottom on left</div>
-    </div>
-    <div id="3 top" style="height: 80px; border:solid 1px black; background-color: transparent" dock="'top'">3. another dock top</div>
-    <div id="4 bottom" style="height: 80px; border:solid 1px black; background-color: transparent" dock="'bottom'">4. dock bottom</div>
-    <div id="5 right" style="width: 140px; border:solid 1px black; background-color: transparent" dock="'right'" dock-resizable>5. dock right</div>
-    <div id="6 top" style="height: 80px; border:solid 1px black; background-color: transparent" dock="'top'">6. dock top</div>
-    <div id="7 fill" style="border:solid 1px black;" dock="'fill'" dock-ref="">
+    <button ng-click="toggleLeftRight()">Toggle Left Right</button>
+    <div id="2.1 bottom" style="height: 80px;" dock="'bottom'">2.1. dock bottom on left</div>
+  </div>
+  <div id="3 top" style="height: 80px;" dock="'top'">3. another dock top</div>
+  <div id="4 bottom" style="height: 80px;" dock="'bottom'" dock-resizable>4. dock bottom</div>
+  <div id="5 right" style="width: 140px;" dock="'right'" dock-resizable>5. dock right</div>
+  <div id="6 top" style="height: 80px;" dock="'top'">6. dock top</div>
+  <div id="7 fill" style="" dock="'fill'" dock-ref="">
     7. dock fill
-                <div id="7.1 bottom" style="height: 90px; border:solid 1px black; background-color: transparent" dock="'bottom'">7.1. dock bottom</div>
-      <div id="7.2 right" style="width: 140px; border:solid 1px black; background-color: transparent" dock="'right'">7.2. dock right</div>
-      <div id="7.3 fill" style="border:solid 1px black;" dock="'fill'">
-        <br />
+    <div id="7.1 bottom" style="height: 90px; " dock="'bottom'">7.1. dock bottom</div>
+    <div id="7.2 right" style="width: 140px; " dock="'right'">7.2. dock right</div>
+    <div id="7.3 fill" style="" dock="'fill'">
+      <br />7.3. fill</div>
+  </div>
+</body>
 
-7.3. fill</div>
-    </div>
-  </body>
 
 </html>
