@@ -40,8 +40,7 @@ example:
   <div dock="'top'" dock-resizeble>Top</div>
   <div dock="'fill'">Fill</div>
 </body>
-```html
+```
 
-notice:
-
-you can only resize a non 'fill' dock
+>notice:
+>you can only resize a non 'fill' dock
