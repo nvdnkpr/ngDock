@@ -48,3 +48,5 @@ example:
 
 >notice:
 >you can only resize a non 'fill' dock
+
+More info: [Wiki](https://github.com/dardino/ngDock/wiki)
