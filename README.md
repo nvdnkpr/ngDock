@@ -4,6 +4,8 @@ ngDock
 angular module for tag dock system
 
 usage:
+------
+
 ```html
 <body dock-ref>
   <div dock="$angularexpr">my content</div>
